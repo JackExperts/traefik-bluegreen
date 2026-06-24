@@ -6,9 +6,9 @@ import (
 	"net"
 	"strconv"
 
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis/cache"
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis/commands"
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis/models"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis/cache"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis/commands"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis/models"
 )
 
 type RedisStore struct {

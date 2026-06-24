@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis/models"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis/models"
 )
 
 type DataType byte

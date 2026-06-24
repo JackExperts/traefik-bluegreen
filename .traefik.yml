@@ -1,7 +1,7 @@
 displayName: BlueGreen Plugin
 type: middleware
 
-import: github.com/PHBueno/traefik-bluegreen
+import: github.com/JackExperts/traefik-bluegreen
 
 summary: '[BlueGreen] Plugin for Blue Green Deployment based on Tenants'
 

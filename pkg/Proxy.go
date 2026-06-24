@@ -5,8 +5,8 @@ import (
 	"net/http/httputil"
 	"net/url"
 
-	"github.com/PHBueno/traefik-bluegreen/pkg/common"
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis"
+	"github.com/JackExperts/traefik-bluegreen/pkg/common"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis"
 )
 
 type Proxy struct {

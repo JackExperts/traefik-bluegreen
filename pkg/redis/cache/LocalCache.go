@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis/models"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis/models"
 )
 
 type cacheEntry struct {

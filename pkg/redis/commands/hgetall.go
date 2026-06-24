@@ -4,8 +4,8 @@ import (
 	"log/slog"
 	"net"
 
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis/models"
-	resp "github.com/PHBueno/traefik-bluegreen/pkg/redis/resp"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis/models"
+	resp "github.com/JackExperts/traefik-bluegreen/pkg/redis/resp"
 )
 
 func HGetAll(conn net.Conn, key string) (*models.TenantSlot, error) {

@@ -1,4 +1,4 @@
-module github.com/PHBueno/traefik-bluegreen
+module github.com/JackExperts/traefik-bluegreen
 
 go 1.26.4
 

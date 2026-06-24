@@ -10,9 +10,9 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/PHBueno/traefik-bluegreen/pkg"
-	"github.com/PHBueno/traefik-bluegreen/pkg/common"
-	"github.com/PHBueno/traefik-bluegreen/pkg/redis"
+	"github.com/JackExperts/traefik-bluegreen/pkg"
+	"github.com/JackExperts/traefik-bluegreen/pkg/common"
+	"github.com/JackExperts/traefik-bluegreen/pkg/redis"
 )
 
 type Config struct {

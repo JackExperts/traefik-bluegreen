@@ -12,6 +12,8 @@ A decisão de roteamento é baseada em informações armazenadas no Redis e mant
 
 # Arquitetura
 
+![Arquitetura](.assets/architecture.jpg)
+
 ## Componentes
 
 - Cliente

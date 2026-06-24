@@ -1,0 +1,13 @@
+displayName: BlueGreen Plugin
+type: middleware
+
+import: github.com/PHBueno/traefik-bluegreen
+
+summary: '[BlueGreen] Plugin for Blue Green Deployment based on Tenants'
+
+testData:
+  CacheTTL: "60"
+  TraefikProxyURL: "https://traefik.traefik-controller.svc.cluster.local:443"
+  RedisAddress: "redis.redis.svc.cluster.local"
+  RedisPort: "6379" 
+  RedisDataBase: "0"

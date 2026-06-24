@@ -11,7 +11,6 @@ import (
 	"os"
 
 	"github.com/JackExperts/traefik-bluegreen/pkg"
-	"github.com/JackExperts/traefik-bluegreen/pkg/common"
 	"github.com/JackExperts/traefik-bluegreen/pkg/redis"
 )
 
@@ -24,7 +23,11 @@ type Config struct {
 }
 
 func CreateConfig() *Config {
-	return &Config{}
+	return &Config{
+		TraefikProxyURL: "https://traefik.traefik-controller.svc.cluster.local:443",
+		CacheTTL:        "60",
+		RedisPort:       "6379",
+	}
 }
 
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
@@ -35,10 +38,6 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 		slog.Error("[REDIS CONFIG] The Redis address has not been set")
 		return nil, fmt.Errorf("[REDIS CONFIG] The Redis address has not been set")
 	}
-
-	config.CacheTTL = common.VerifyEmpty(config.CacheTTL, "60")
-	config.TraefikProxyURL = common.VerifyEmpty(config.TraefikProxyURL, "https://traefik.traefik-controller.svc.cluster.local:443")
-	config.RedisPort = common.VerifyEmpty(config.RedisPort, "6379")
 
 	slog.Info("instanced plugin", "name", name)
 

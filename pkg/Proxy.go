@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"net/http/httputil"
 	"net/url"
+	"strings"
 
 	"github.com/JackExperts/traefik-bluegreen/pkg/common"
 	"github.com/JackExperts/traefik-bluegreen/pkg/redis"
@@ -23,7 +24,9 @@ func (p *Proxy) RewriteProxy() func(*httputil.ProxyRequest) {
 		tenant := common.VerifyEmpty(pr.In.URL.Query().Get("tenant"), "000000") // tenant default => 000000
 		app := common.VerifyEmpty(pr.In.Header.Get("X-App-Slug"), "default")    // app default => default
 
-		slog.Info("Application Path", "path", pr.In.URL.Path)
+		appPath := strings.Split(pr.In.URL.Path, "/")[0]
+
+		slog.Info("Application Path", "path", appPath)
 
 		tenantModel, err := p.RedisConn.GetSlot(tenant, app)
 		slot := "-1" // Caso não encontre o valor no Redis nem no Cache

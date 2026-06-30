@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log/slog"
 	"net"
+	"os"
 	"strconv"
 
 	"github.com/JackExperts/traefik-bluegreen/pkg/redis/cache"
@@ -83,7 +84,9 @@ func (rs *RedisStore) getRedisSlot(tenant string, app string) (*models.TenantSlo
 	}
 
 	// Se o tenant não estiver mapeado, consulta pelo tenant -1 para a app em específico.
+	fmt.Fprintln(os.Stdout, "TENANT RETORNADO: ", tenantModel)
 	if tenantModel == nil {
+		slog.Error("[REDIS CONNECTION] => Buscando por tenant -1")
 		tenantModel, err = commands.HGetAll(conn, fmt.Sprintf("%s:%s", "-1", app))
 	}
 

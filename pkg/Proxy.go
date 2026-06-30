@@ -21,7 +21,7 @@ func (p *Proxy) RewriteProxy() func(*httputil.ProxyRequest) {
 		pr.SetURL(p.ProxyURL)
 		pr.Out.Host = pr.In.Host
 
-		tenant := common.VerifyEmpty(pr.In.URL.Query().Get("tenant"), "000000") // tenant default => 000000
+		tenant := common.VerifyEmpty(pr.In.URL.Query().Get("tenant"), "-1") // tenant default => 000000
 		//app := common.VerifyEmpty(pr.In.Header.Get("X-App-Slug"), "default")    // app default => default
 
 		appPath := strings.Split(pr.In.URL.Path, "/")[1]

@@ -77,12 +77,19 @@ func (rs *RedisStore) getRedisSlot(tenant string, app string) (*models.TenantSlo
 	slog.Info("[REDIS CONNECTION] => conexão estabelecida com sucesso")
 
 	tenantModel, err := commands.HGetAll(conn, fmt.Sprintf("%s:%s", tenant, app))
-	conn.Close()
-	slog.Info("[REDIS CONNECTION] => conexão fechada com sucesso")
 
 	if err != nil {
 		return nil, err
 	}
+
+	// Se o tenant não estiver mapeado, consulta pelo tenant -1 para a app em específico.
+	if tenantModel == nil {
+		tenantModel, err = commands.HGetAll(conn, fmt.Sprintf("%s:%s", "-1", app))
+	}
+
+	conn.Close()
+
+	slog.Info("[REDIS CONNECTION] => conexão fechada com sucesso")
 
 	slog.Info("escrevendo no cache interno")
 	rs.updateCache(tenant, app, tenantModel.Slot)
